@@ -1,4 +1,5 @@
 import { useState } from "react"
+import React from "react"
 
 const useLocalStorage = (localStorageKey, valueInit) => {
     if (typeof localStorage === undefined) {
@@ -12,7 +13,7 @@ const useLocalStorage = (localStorageKey, valueInit) => {
             return JSON.parse(strValue)
         }
     }
-    const [value, setValue] = React.useState(init);
+    const [value, setValue] = useState(init);
  
     React.useEffect(() => {
         localStorage.setItem(localStorageKey, JSON.stringify(value));
