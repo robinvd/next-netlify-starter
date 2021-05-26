@@ -32,7 +32,12 @@ export default function Main(props) {
         <p>Current row {row + 1}</p>
         <p>Type: {rowType}</p>
         <p>Kabel: {hasKabel}</p>
-        <button onClick={() => setRow(n => n-1)}>undo</button>
-        <button onClick={() => setRow(n => n+1)}>next row</button>
+        <p>
+            <button onClick={() => setRow(n => Math.max(n-1, 0))}>undo</button>
+            <button onClick={() => setRow(n => n+1)}>next row</button>
+        </p>
+        <p>
+            <button onClick={() => setRow(0)}>reset</button>
+        </p>
     </div>
 }

@@ -8,7 +8,7 @@ export default function Home() {
     <div className="container">
 
       <main>
-        <Header class="title" title="Welcome to Toki's knitt app!" />
+        <Header class="title" title="Welcome to Toki's knit app!" />
         <Main/>
       </main>
 
