@@ -1,8 +1,9 @@
 import { useState } from "react"
+import { useLocalStorage } from '@rehooks/local-storage';
 
 
 export default function Main(props) {
-    const [row, setRow] = useState(0);
+    const [row, setRow] = useLocalStorage('row', 0);
 
     const rowType = row % 2 ? "recht" : "averecht";
     const hasKabel = (row % 6) === 2 ? "ja" : "nee";
