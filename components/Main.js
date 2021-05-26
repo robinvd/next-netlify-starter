@@ -1,6 +1,25 @@
 import { useState } from "react"
-import { useLocalStorage } from '@rehooks/local-storage';
 
+const useLocalStorage = (localStorageKey, valueInit) => {
+    if (typeof localStorage === undefined) {
+        return useState(valueInit)
+    }
+    const init = () => {
+        const strValue = localStorage.getItem(localStorageKey);
+        if (strValue === null) {
+            return valueInit
+        } else {
+            return JSON.parse(strValue)
+        }
+    }
+    const [value, setValue] = React.useState(init);
+ 
+    React.useEffect(() => {
+        localStorage.setItem(localStorageKey, JSON.stringify(value));
+    }, [value]);
+ 
+    return [value, setValue];
+};
 
 export default function Main(props) {
     const [row, setRow] = useLocalStorage('row', 0);
